@@ -4,9 +4,13 @@
   box-sizing: border-box;
 }
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//Grid layout
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 .container {
   display: grid;
-  grid-template-columns: 7% 7% 72% 7% 7%;
+  grid-template-columns: 7% 9% 68% 9% 7%;
   grid-template-rows: 15vh 75vh 10vh;
   grid-template-areas:
     '. header header header .'
@@ -14,20 +18,94 @@
     '. footer footer footer .';
 }
 
-.header {
-  display: grid;
-  background-color: red;
-  grid-area: header;
-}
-
-.footer {
-  display: grid;
+.footerContainer {
   background-color: green;
   grid-area: footer;
+  border-top: 1px solid blue;
 }
 
-.taskBox {
-  display: grid;
-  background-color: blue;
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//Header layout
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+.headerContainer {
+  grid-area: header;
+  border-bottom: 1px solid blue;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.burger {
+  cursor: pointer;
+  position: absolute;
+  left: 7%;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: fit-content;
+  padding: 2px 2px 2px 2px;
+  border-color: blue;
+
+  div {
+    width: 25px;
+    height: 3px;
+    background-color: blue;
+    margin: 5px;
+    transition: all 0.3s ease;
+  }
+}
+
+.searchBar {
+  ::placeholder {
+    color: grey;
+  }
+  .searchInput {
+    width: 40vw;
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 10px 0px 10px 30px;
+    border-bottom: 1px solid grey;
+  }
+
+  .searchIcon {
+    position: absolute;
+    display: inline-block;
+    padding: 10px 0px 0px 5px;
+    color: blue;
+  }
+}
+
+.userIcon {
+  cursor: pointer;
+  position: absolute;
+  right: 7%;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: fit-content;
+  padding: 2px 2px 2px 2px;
+  border-color: blue;
+
+  i {
+    color: blue;
+    font-size: 170%;
+    padding: 1px 5.5px 1px 5.5px;
+  }
+}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//TaskBox layout
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+.taskBoxContainer {
+  display: relative;
   grid-area: main;
+
+  .taskBox {
+    padding: 7vh 0px 7vh 0px;
+  }
 }

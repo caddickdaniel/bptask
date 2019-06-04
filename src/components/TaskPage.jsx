@@ -9,6 +9,8 @@ export default class TaskPage extends Component {
       <div className="container">
         <Header />
         <TaskBox />
+        <TaskBox />
+        <TaskBox />
         <Footer />
       </div>
     );

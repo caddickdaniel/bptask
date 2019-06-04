@@ -8,39 +8,124 @@
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 7% 7% 72% 7% 7%;
-      grid-template-columns: 7% 7% 72% 7% 7%;
+  -ms-grid-columns: 7% 9% 68% 9% 7%;
+      grid-template-columns: 7% 9% 68% 9% 7%;
   -ms-grid-rows: 15vh 75vh 10vh;
       grid-template-rows: 15vh 75vh 10vh;
       grid-template-areas: '. header header header .' '. . main . .' '. footer footer footer .';
 }
 
-.header {
-  display: -ms-grid;
-  display: grid;
-  background-color: red;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 3;
-  grid-area: header;
-}
-
-.footer {
-  display: -ms-grid;
-  display: grid;
+.footerContainer {
   background-color: green;
   -ms-grid-row: 3;
   -ms-grid-column: 2;
   -ms-grid-column-span: 3;
   grid-area: footer;
+  border-top: 1px solid blue;
 }
 
-.taskBox {
-  display: -ms-grid;
-  display: grid;
+.headerContainer {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-area: header;
+  border-bottom: 1px solid blue;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.burger {
+  cursor: pointer;
+  position: absolute;
+  left: 7%;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2px 2px 2px 2px;
+  border-color: blue;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
   background-color: blue;
+  margin: 5px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.searchBar ::-webkit-input-placeholder {
+  color: grey;
+}
+
+.searchBar :-ms-input-placeholder {
+  color: grey;
+}
+
+.searchBar ::-ms-input-placeholder {
+  color: grey;
+}
+
+.searchBar ::placeholder {
+  color: grey;
+}
+
+.searchBar .searchInput {
+  width: 40vw;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 10px 0px 10px 30px;
+  border-bottom: 1px solid grey;
+}
+
+.searchBar .searchIcon {
+  position: absolute;
+  display: inline-block;
+  padding: 10px 0px 0px 5px;
+  color: blue;
+}
+
+.userIcon {
+  cursor: pointer;
+  position: absolute;
+  right: 7%;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2px 2px 2px 2px;
+  border-color: blue;
+}
+
+.userIcon i {
+  color: blue;
+  font-size: 170%;
+  padding: 1px 5.5px 1px 5.5px;
+}
+
+.taskBoxContainer {
+  display: relative;
   -ms-grid-row: 2;
   -ms-grid-column: 3;
   grid-area: main;
+}
+
+.taskBoxContainer .taskBox {
+  padding: 7vh 0px 7vh 0px;
 }
 /*# sourceMappingURL=App.css.map */
