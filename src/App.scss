@@ -1,0 +1,33 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 7% 7% 72% 7% 7%;
+  grid-template-rows: 15vh 75vh 10vh;
+  grid-template-areas:
+    '. header header header .'
+    '. . main . .'
+    '. footer footer footer .';
+}
+
+.header {
+  display: grid;
+  background-color: red;
+  grid-area: header;
+}
+
+.footer {
+  display: grid;
+  background-color: green;
+  grid-area: footer;
+}
+
+.taskBox {
+  display: grid;
+  background-color: blue;
+  grid-area: main;
+}

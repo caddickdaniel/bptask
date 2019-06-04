@@ -1,33 +1,46 @@
-.App {
-  text-align: center;
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 7% 7% 72% 7% 7%;
+      grid-template-columns: 7% 7% 72% 7% 7%;
+  -ms-grid-rows: 15vh 75vh 10vh;
+      grid-template-rows: 15vh 75vh 10vh;
+      grid-template-areas: '. header header header .' '. . main . .' '. footer footer footer .';
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header {
+  display: -ms-grid;
+  display: grid;
+  background-color: red;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-area: header;
 }
 
-.App-link {
-  color: #61dafb;
+.footer {
+  display: -ms-grid;
+  display: grid;
+  background-color: green;
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-area: footer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.taskBox {
+  display: -ms-grid;
+  display: grid;
+  background-color: blue;
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: main;
 }
+/*# sourceMappingURL=App.css.map */
