@@ -3,13 +3,15 @@
   padding: 0px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
+  overflow-x: hidden;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 7% 9% 68% 9% 7%;
-      grid-template-columns: 7% 9% 68% 9% 7%;
+  -ms-grid-columns: 7% 11% 64% 11% 7%;
+      grid-template-columns: 7% 11% 64% 11% 7%;
   -ms-grid-rows: 15vh 75vh 10vh;
       grid-template-rows: 15vh 75vh 10vh;
       grid-template-areas: '. header header header .' '. . main . .' '. footer footer footer .';
@@ -125,13 +127,95 @@
   grid-area: main;
 }
 
+.taskBoxContainer .taskBox {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'task priority';
+  -ms-grid-columns: 70% 30%;
+      grid-template-columns: 70% 30%;
+  margin: 5vh 6vw 5vh 6vw;
+  border: 1px solid blue;
+}
+
 .taskBoxContainer .taskInfo {
-  width: 60%;
-  padding: 7vh 0vh 7vh 0vh;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: task;
+  height: 100px;
+  margin: 1vh 0 0 1vw;
 }
 
 .taskBoxContainer .processBox {
-  width: 40%;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: priority;
+  border-left: 1px solid blue;
+  text-align: center;
+}
+
+.taskBoxContainer .processBox .workersBox {
+  padding: 1vh 1vw 0 1vw;
+}
+
+.taskBoxContainer .processBox .workersBox i {
+  cursor: pointer;
+}
+
+.taskBoxContainer .processBox .priorityBox {
+  padding: 0 1vw 0 1vw;
+  text-align: center;
+  font-size: 200%;
+}
+
+.taskBoxContainer .processBox .priorityBox i {
+  cursor: pointer;
+}
+
+.taskBoxContainer .taskName {
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid grey;
+  width: 95%;
+}
+
+.taskBoxContainer .taskDesc textarea {
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid grey;
+  height: 8vh;
+  width: 95%;
+  resize: none;
+}
+
+.taskBoxContainer .buttonContainer {
+  display: block;
+  background-color: blue;
+  width: 100%;
+}
+
+.taskBoxContainer .buttonContainer button {
+  display: block;
+  border: none;
+  background-color: blue;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.taskBoxContainer .buttonContainer button i {
+  color: white;
+}
+
+.taskBoxContainer .buttonContainer button p {
+  display: inline;
+  color: white;
+  padding-left: 4px;
 }
 
 .dropdown {

@@ -2,6 +2,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -9,8 +10,9 @@
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 .container {
+  overflow-x: hidden;
   display: grid;
-  grid-template-columns: 7% 9% 68% 9% 7%;
+  grid-template-columns: 7% 11% 64% 11% 7%;
   grid-template-rows: 15vh 75vh 10vh;
   grid-template-areas:
     '. header header header .'
@@ -106,16 +108,92 @@
   grid-area: main;
 
   .taskBox {
-    // display: inline-block;
+    display: grid;
+    grid-template-areas: 'task priority';
+    grid-template-columns: 70% 30%;
+    margin: 5vh 6vw 5vh 6vw;
+    border: 1px solid blue;
   }
 
   .taskInfo {
-    width: 60%;
-    padding: 7vh 0vh 7vh 0vh;
+    grid-area: task;
+    height: 100px;
+    margin: 1vh 0 0 1vw;
   }
 
   .processBox {
-    width: 40%;
+    grid-area: priority;
+    border-left: 1px solid blue;
+    text-align: center;
+
+    .workersBox {
+      padding: 1vh 1vw 0 1vw;
+
+      i {
+        cursor: pointer;
+      }
+    }
+
+    .priorityBox {
+      padding: 0 1vw 0 1vw;
+      text-align: center;
+      font-size: 200%;
+
+      i {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .taskName {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 1px solid grey;
+    width: 95%;
+  }
+
+  .taskDesc {
+    textarea {
+      border: none;
+      background-image: none;
+      background-color: transparent;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      border-bottom: 1px solid grey;
+      height: 8vh;
+      width: 95%;
+      resize: none;
+    }
+  }
+
+  .buttonContainer {
+    display: block;
+    background-color: blue;
+    width: 100%;
+
+    button {
+      display: block;
+      border: none;
+      background-color: blue;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+
+      i {
+        color: white;
+      }
+
+      p {
+        display: inline;
+        color: white;
+        padding-left: 4px;
+      }
+    }
   }
 }
 
