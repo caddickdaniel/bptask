@@ -7,7 +7,6 @@
 }
 
 .container {
-  overflow-x: hidden;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 7% 11% 64% 11% 7%;
@@ -244,5 +243,112 @@
 .dropdown:hover .dropdown-content {
   display: block;
   cursor: pointer;
+}
+
+.navLinks {
+  padding-top: 5em;
+  padding-bottom: 20em;
+  position: absolute;
+  left: 0px;
+  height: 85vh;
+  top: 10vh;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  text-align: left;
+  padding-left: 7vw;
+  width: 15%;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  z-index: 1;
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+  margin-top: 43px;
+}
+
+.navLinks h3 {
+  padding-bottom: 6vh;
+}
+
+.navLinks h3 {
+  opacity: 0;
+}
+
+.navActive {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  background-color: white;
+}
+
+@-webkit-keyframes navLinkFade {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+.toggle .line1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+          transform: rotate(-45deg) translate(-5px, 6px);
+  background-color: blue;
+}
+
+.toggle .line2 {
+  opacity: 0;
+  background-color: blue;
+}
+
+.toggle .line3 {
+  -webkit-transform: rotate(45deg) translate(-5px, -6px);
+          transform: rotate(45deg) translate(-5px, -6px);
+  background-color: blue;
+}
+
+.homeButton,
+.aboutButton,
+.tasksButton,
+.contactButton {
+  color: blue;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom: 1px solid blue;
+  font-size: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: inherit;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 /*# sourceMappingURL=App.css.map */

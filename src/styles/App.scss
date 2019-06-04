@@ -10,7 +10,7 @@
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 .container {
-  overflow-x: hidden;
+  // overflow-x: hidden;
   display: grid;
   grid-template-columns: 7% 11% 64% 11% 7%;
   grid-template-rows: 15vh 75vh 10vh;
@@ -226,4 +226,84 @@
 .dropdown:hover .dropdown-content {
   display: block;
   cursor: pointer;
+}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//Dropdown layout
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+.navLinks {
+  padding-top: 5em;
+  padding-bottom: 20em;
+  position: absolute;
+  left: 0px;
+  height: 85vh;
+  top: 10vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  padding-left: 7vw;
+  width: 15%;
+  transform: translateX(-100%);
+  z-index: 1;
+  transition: transform 0.5s ease-in;
+  // border-right: 1px solid blue;
+  margin-top: 43px;
+
+  h3 {
+    padding-bottom: 6vh;
+  }
+}
+.navLinks h3 {
+  opacity: 0;
+}
+
+.navActive {
+  transform: translateX(0%);
+  background-color: white;
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+  background-color: blue;
+}
+.toggle .line2 {
+  opacity: 0;
+  background-color: blue;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+  background-color: blue;
+}
+
+.homeButton,
+.aboutButton,
+.tasksButton,
+.contactButton {
+  color: blue;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom: 1px solid blue;
+  font-size: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: inherit;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
