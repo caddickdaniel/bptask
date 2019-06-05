@@ -59,7 +59,7 @@ export default class TaskBox extends Component {
   };
 
   handleArchive = () => {
-    this.taskBox.display = 'none';
+    document.querySelector('.taskBox').style.display = 'none';
   };
 
   handleTimeAllo = timeAllo => {
@@ -147,6 +147,7 @@ export default class TaskBox extends Component {
             <div className="taskTitle">
               <p>Task</p>
               <input
+                required
                 type="text"
                 className="taskName"
                 placeholder="Order Coffee Beans"
@@ -159,6 +160,7 @@ export default class TaskBox extends Component {
             </div>
             <div className="taskDescBox">
               <textarea
+                required
                 className="taskDesc"
                 placeholder="Process Description"
                 onChange={() =>
@@ -194,16 +196,17 @@ export default class TaskBox extends Component {
             <div className="priorityBox">
               <button
                 disabled={this.state.priority === 0 ? true : false}
-                onClick={() => this.handlePriority(-1)}
+                onClick={() => this.handlePriority(-2)}
               >
                 <i class="fas fa-minus-circle" />
               </button>
+
               <i class="far fa-star" />
               <i class="far fa-star" />
               <i class="far fa-star" />
               <button
                 disabled={this.state.priority === 6 ? true : false}
-                onClick={() => this.handlePriority(1)}
+                onClick={() => this.handlePriority(2)}
               >
                 <i class="fas fa-plus-circle" />
               </button>
@@ -255,7 +258,7 @@ export default class TaskBox extends Component {
                       >
                         &times;
                       </span>
-                      <tr>
+                      <tr className="timeAllo">
                         {' '}
                         Time Allocation:{' '}
                         <input

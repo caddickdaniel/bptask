@@ -171,7 +171,7 @@
     }
 
     .priorityBox {
-      padding: 0 1vw 0 1vw;
+      padding: 0 2.5vw 0 2.5vw;
       text-align: center;
       font-size: 200%;
 
@@ -368,11 +368,22 @@
 
 .modal-content,
 .modal-content2 {
+  input {
+    text-align: center;
+  }
+  // display: flex;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 30%;
+  min-height: 150px;
+  text-align: inherit;
+  // flex-wrap: wrap;
+}
+
+.radioBtn {
+  text-align: center;
 }
 
 .close {
@@ -402,4 +413,32 @@
   width: 0%;
   height: 30px;
   background-color: blue;
+}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//Process Box
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+.processTitle {
+  font-weight: 100;
+  max-width: 482px;
+  border-bottom: 1px solid grey;
+}
+
+.taskDescBox {
+  p {
+    padding-top: 3px;
+    font-size: 70%;
+    max-width: 500px;
+    min-height: 40px;
+    word-wrap: break-word;
+  }
+}
+
+.progressStats {
+  max-width: 490px;
+}
+
+.timeRemaining {
+  float: right;
 }

@@ -12,16 +12,17 @@ export default class TaskProcess extends Component {
         <div className="taskInfo">
           <div />
           <div className="taskTitle">
-            <p>Task</p>
-            <h3>{this.props.taskTitle}</h3>
+            <h3 className="processTitle">{this.props.taskTitle || 'Title'}</h3>
           </div>
           <div className="taskDescBox">
             <p>{this.props.taskDesc}</p>
           </div>
-          <div>
-            <small>Average task time: {this.state.taskInterval || 0}</small>
-            <small>
-              Time remaining: {'0' + this.state.allocatedTime || 0} mins
+          <div className="progressStats">
+            <small className="avgTime">
+              Number of tasks: {this.props.tasks || 0}
+            </small>
+            <small className="timeRemaining">
+              Time remaining: {this.state.allocatedTime || 0} mins
             </small>
           </div>
           <ProgressBar allocatedTime={allocatedTime} />
