@@ -28,7 +28,7 @@ export default class TaskBox extends Component {
       'Jimbo',
       'Terrence',
       'Jay',
-      'Joe'
+      'Jim'
     ],
     assignedWorkers: 0,
     priority: 0,
@@ -78,12 +78,12 @@ export default class TaskBox extends Component {
     });
   };
 
-  handleRadioBtn = () => {
+  handleRadioBtn = inc => {
     const { assignedWorkers } = this.state;
-    if (this.state.assignedWorkers > 25) {
-      this.setState({ assignedWorkers: assignedWorkers + 1 });
+    if (assignedWorkers < 25) {
+      this.setState({ assignedWorkers: assignedWorkers + inc });
     }
-    console.log(assignedWorkers);
+    console.log(this.state.assignedWorkers);
   };
 
   handleModal = myModal => {
@@ -133,7 +133,7 @@ export default class TaskBox extends Component {
             name={worker}
             value="worker"
             className="radioBtn"
-            onClick={() => this.handleRadioBtn()}
+            onClick={() => this.handleRadioBtn(1)}
           />{' '}
           {worker}
         </tr>
@@ -168,15 +168,15 @@ export default class TaskBox extends Component {
                 }
               />
             </div>
-          </div>
-
-          <div className="processBox">
             <div className="playButton">
               <i
                 class="far fa-play-circle"
                 onClick={() => this.handleTaskStart()}
               />
             </div>
+          </div>
+
+          <div className="processBox">
             <div className="workersBox">
               <p>Workers Assigned</p>
               <button

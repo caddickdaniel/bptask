@@ -49,9 +49,9 @@ export default class TaskProcess extends Component {
             <button disabled>
               <i class="fas fa-minus-circle" />
             </button>
-            <i class="far fa-star" />
-            <i class="far fa-star" />
-            <i class="far fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
             <button disabled>
               <i class="fas fa-plus-circle" />
             </button>

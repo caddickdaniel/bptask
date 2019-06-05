@@ -138,11 +138,12 @@
 }
 
 .taskBoxContainer .playButton {
-  position: absolute;
+  position: relative;
   font-size: 200%;
   color: blue;
-  -webkit-transform: translateY(130%);
-          transform: translateY(130%);
+  -webkit-transform: translateY(-160%);
+          transform: translateY(-160%);
+  float: right;
 }
 
 .taskBoxContainer .taskBox {
@@ -195,8 +196,11 @@
   outline: inherit;
 }
 
+.taskBoxContainer .processBox .workersBox .unassignedBtn p {
+  text-align: center;
+}
+
 .taskBoxContainer .processBox .priorityBox {
-  padding: 0 2.5vw 0 2.5vw;
   text-align: center;
   font-size: 200%;
 }
@@ -255,6 +259,7 @@
   display: inline;
   color: white;
   padding-left: 4px;
+  text-align: center;
 }
 
 .dropdown {
@@ -471,5 +476,51 @@
 
 .timeRemaining {
   float: right;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    -ms-grid-columns: 4% 8% 76% 8% 4%;
+        grid-template-columns: 4% 8% 76% 8% 4%;
+  }
+}
+
+@media screen and (max-width: 864px) {
+  .container {
+    -ms-grid-columns: 2% 3% 90% 3% 2%;
+        grid-template-columns: 2% 3% 90% 3% 2%;
+  }
+}
+
+@media screen and (max-width: 642px) {
+  .container {
+    -ms-grid-columns: 0% 0% 100% 0% 0%;
+        grid-template-columns: 0% 0% 100% 0% 0%;
+    -ms-grid-rows: 15vh 75vh 10vh;
+        grid-template-rows: 15vh 75vh 10vh;
+        grid-template-areas: '. header header header .' 'main main main main main' '. footer footer footer .';
+  }
+  .taskBoxContainer .taskBox {
+    display: -ms-grid;
+    display: grid;
+        grid-template-areas: 'task priority';
+    -ms-grid-columns: 60% 40%;
+        grid-template-columns: 60% 40%;
+    margin: none;
+    border: 1px solid blue;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .taskBoxContainer .taskBox {
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .priorityBox i {
+    font-size: 80%;
+  }
 }
 /*# sourceMappingURL=App.css.map */
