@@ -15,14 +15,14 @@ export default class TaskProcess extends Component {
             <h3 className="processTitle">{this.props.taskTitle || 'Title'}</h3>
           </div>
           <div className="taskDescBox">
-            <p>{this.props.taskDesc}</p>
+            <p className="taskDescP">{this.props.taskDesc}</p>
           </div>
           <div className="progressStats">
             <small className="avgTime">
               Number of tasks: {this.props.tasks || 0}
             </small>
             <small className="timeRemaining">
-              Time remaining: {this.state.allocatedTime || 0} mins
+              Time allocated: {this.state.allocatedTime || 0} mins
             </small>
           </div>
           <ProgressBar allocatedTime={allocatedTime} />

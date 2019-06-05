@@ -141,9 +141,9 @@
   position: relative;
   font-size: 200%;
   color: blue;
-  -webkit-transform: translateY(-160%);
-          transform: translateY(-160%);
-  float: right;
+  -webkit-transform: translateY(140%);
+          transform: translateY(140%);
+  float: left;
 }
 
 .taskBoxContainer .taskBox {
@@ -212,6 +212,11 @@
 
 .taskBoxContainer .processBox .priorityBox i {
   cursor: pointer;
+}
+
+.taskBoxContainer .taskDescP {
+  max-width: 480px;
+  margin: 0;
 }
 
 .taskBoxContainer .taskName {
@@ -310,7 +315,7 @@
           align-items: left;
   text-align: left;
   padding-left: 7vw;
-  width: 15%;
+  width: 20%;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
   z-index: 1;
@@ -478,10 +483,28 @@
   float: right;
 }
 
+@media screen and (max-width: 1440px) {
+  .priorityBox i {
+    font-size: 90%;
+  }
+  .playButton i {
+    font-size: 90%;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .priorityBox i {
+    font-size: 80%;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     -ms-grid-columns: 4% 8% 76% 8% 4%;
         grid-template-columns: 4% 8% 76% 8% 4%;
+  }
+  .navLinks {
+    width: 25%;
   }
 }
 
@@ -489,6 +512,9 @@
   .container {
     -ms-grid-columns: 2% 3% 90% 3% 2%;
         grid-template-columns: 2% 3% 90% 3% 2%;
+  }
+  .navLinks {
+    width: 30%;
   }
 }
 
@@ -509,6 +535,9 @@
     margin: none;
     border: 1px solid blue;
   }
+  .navLinks {
+    width: 35%;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -516,11 +545,17 @@
     -ms-grid-columns: 50% 50%;
         grid-template-columns: 50% 50%;
   }
+  .navLinks {
+    width: 40%;
+  }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 375px) {
   .priorityBox i {
-    font-size: 80%;
+    font-size: 70%;
+  }
+  .navLinks {
+    width: 50%;
   }
 }
 /*# sourceMappingURL=App.css.map */

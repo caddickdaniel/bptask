@@ -168,15 +168,15 @@ export default class TaskBox extends Component {
                 }
               />
             </div>
+          </div>
+
+          <div className="processBox">
             <div className="playButton">
               <i
                 class="far fa-play-circle"
                 onClick={() => this.handleTaskStart()}
               />
             </div>
-          </div>
-
-          <div className="processBox">
             <div className="workersBox">
               <p>Workers Assigned</p>
               <button
@@ -196,7 +196,7 @@ export default class TaskBox extends Component {
             <div className="priorityBox">
               <button
                 disabled={this.state.priority === 0 ? true : false}
-                onClick={() => this.handlePriority(-2)}
+                onClick={() => this.handlePriority(-1)}
               >
                 <i class="fas fa-minus-circle" />
               </button>
@@ -206,7 +206,7 @@ export default class TaskBox extends Component {
               <i class="far fa-star" />
               <button
                 disabled={this.state.priority === 6 ? true : false}
-                onClick={() => this.handlePriority(2)}
+                onClick={() => this.handlePriority(1)}
               >
                 <i class="fas fa-plus-circle" />
               </button>
