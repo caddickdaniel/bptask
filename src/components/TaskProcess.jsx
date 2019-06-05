@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
-// import { Line } from 'rc-progress';
-
-const timeConverter = time => {
-  let hours = time / 60;
-  let rHours = Math.floor(hours);
-  let minutes = (hours - rHours) * 60;
-  let rMinutes = Math.round(minutes);
-  return time + rHours + rMinutes;
-};
+import ProgressBar from './ProgressBar';
 
 export default class TaskProcess extends Component {
   state = {
-    taskInterval: `${timeConverter(this.props.allocatedTime) /
-      this.props.assignedWorkers}mins`,
-    allocatedTime: timeConverter(+this.props.allocatedTime * 60),
-    timeAlapsed: 0,
-    progress: 0
+    allocatedTime: this.props.allocatedTime.toFixed(2)
   };
   render() {
+    const { allocatedTime } = this.state;
     return (
       <div className="taskBox">
         <div className="taskInfo">
@@ -31,26 +20,11 @@ export default class TaskProcess extends Component {
           </div>
           <div>
             <small>Average task time: {this.state.taskInterval || 0}</small>
-            <small>Time remaining: {this.state.allocatedTime || 0}mins</small>
+            <small>
+              Time remaining: {'0' + this.state.allocatedTime || 0} mins
+            </small>
           </div>
-          <div className="progress">
-            <div
-              className="progress-bar"
-              id="progressBar"
-              role="progressbar"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            />
-          </div>
-          <div>
-            {/* <Line
-              percent={this.state.progress}
-              strokeWidth="3"
-              strokeColor="blue"
-              id="progressBar"
-            /> */}
-          </div>
+          <ProgressBar allocatedTime={allocatedTime} />
         </div>
 
         <div className="processBox">
