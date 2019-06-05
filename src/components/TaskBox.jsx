@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 
 export default class TaskBox extends Component {
+  state = {
+    workers: [],
+    assignedWorkers: 0
+  };
+
+  handleWorkerInc = inc => {
+    const { assignedWorkers } = this.state;
+    this.setState({ assignedWorkers: assignedWorkers + inc });
+  };
+
   render() {
     return (
       <div className="taskBox">
@@ -21,9 +31,19 @@ export default class TaskBox extends Component {
         <div className="processBox">
           <div className="workersBox">
             <p>Workers Assigned</p>
-            <i class="fas fa-minus-circle" />
-            0/25
-            <i class="fas fa-plus-circle" />
+            <button
+              disabled={this.state.assignedWorkers === 0 ? true : false}
+              onClick={() => this.handleWorkerInc(-1)}
+            >
+              <i class="fas fa-minus-circle" />
+            </button>
+            {this.state.assignedWorkers}/25
+            <button
+              disabled={this.state.assignedWorkers === 25 ? true : false}
+              onClick={() => this.handleWorkerInc(1)}
+            >
+              <i class="fas fa-plus-circle" />
+            </button>
           </div>
           <div className="priorityBox">
             <i class="far fa-star" />
