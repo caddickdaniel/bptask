@@ -2,10 +2,79 @@ import React, { Component } from 'react';
 
 export default class TaskBox extends Component {
   state = {
-    workers: [],
+    workers: [
+      'Paul',
+      'Barry',
+      'John',
+      'Sarah',
+      'Carla',
+      'Danny',
+      'Cheryl',
+      'Justine',
+      'Jerome',
+      'Steph',
+      'Julie',
+      'Robbie',
+      'Ashleigh',
+      'Paula',
+      'Shaq',
+      'Ahmed',
+      'Joe',
+      'Tom',
+      'Hannah',
+      'Annie',
+      'Jim',
+      'Jimbo',
+      'Terrence',
+      'Jay',
+      'Joe'
+    ],
     assignedWorkers: 0,
     priority: 0,
-    maximumWorkers: 25
+    maximumWorkers: 25,
+    allocatedTime: '0:00',
+    tasks: '0',
+    taskStart: false
+  };
+
+  handleTaskStart = () => {};
+
+  handleArchive = () => {
+    this.taskBox.display = 'none';
+  };
+
+  handleTimeAllo = timeAllo => {
+    this.setState({ allocatedTime: timeAllo });
+    console.log(this.state.allocatedTime);
+  };
+
+  handleTaskAllo = taskAllo => {
+    this.setState({ tasks: taskAllo });
+    console.log(this.state.tasks);
+  };
+
+  clearRadios = () => {
+    this.state.workers.forEach(function(worker) {
+      document.querySelector(`input[name=${worker}]:checked`).checked = false;
+    });
+  };
+
+  handleRadioBtn = () => {
+    const { assignedWorkers } = this.state;
+    if (this.state.assignedWorkers > 25) {
+      this.setState({ assignedWorkers: assignedWorkers + 1 });
+    }
+    console.log(assignedWorkers);
+  };
+
+  handleModal = myModal => {
+    const modal = document.getElementById(myModal);
+    modal.style.display = 'block';
+  };
+
+  closeModal = myModal => {
+    const modal = document.getElementById(myModal);
+    modal.style.display = 'none';
   };
 
   handleWorkerInc = inc => {
@@ -26,6 +95,22 @@ export default class TaskBox extends Component {
   };
 
   render() {
+    const { workers } = this.state;
+    const workerItems = workers.map(worker => {
+      return (
+        <tr>
+          <input
+            type="radio"
+            name={worker}
+            value="worker"
+            className="radioBtn"
+            onClick={() => this.handleRadioBtn()}
+          />{' '}
+          {worker}
+        </tr>
+      );
+    });
+
     return (
       <div className="taskBox">
         <div className="taskInfo">
@@ -81,17 +166,87 @@ export default class TaskBox extends Component {
           </div>
           <div className="dropdown">
             <div className="buttonContainer">
-              <button>
+              <button className="unassignedBtn">
                 <i class="fas fa-cog" />
                 <p>Unassigned</p>
               </button>
               <div className="dropdown-content">
-                <p onClick={() => this.handleAutoAssign(this.state.priority)}>
-                  Auto-Assign
-                </p>
-                <p>Select Workers</p>
-                <p>Schedule</p>
-                <p>Archive</p>
+                <button>
+                  <p onClick={() => this.handleAutoAssign(this.state.priority)}>
+                    Auto-Assign
+                  </p>
+                </button>
+                <button id="myBtn" onClick={() => this.handleModal('myModal')}>
+                  <p>Select Workers</p>
+                </button>
+
+                <div id="myModal" className="modal">
+                  <div className="modal-content">
+                    <span
+                      className="close"
+                      onClick={() => this.closeModal('myModal')}
+                    >
+                      &times;
+                    </span>
+                    {workerItems}
+                    <button onClick={() => this.clearRadios()}>Clear</button>
+                  </div>
+                </div>
+                <button
+                  id="myBtn2"
+                  onClick={() => this.handleModal('myModal2')}
+                >
+                  <p>Schedule</p>
+                </button>
+                <div id="myModal2" className="modal2">
+                  <div className="modal-content2">
+                    <span
+                      className="close"
+                      onClick={() => this.closeModal('myModal2')}
+                    >
+                      &times;
+                    </span>
+                    <tr>
+                      {' '}
+                      Complete by:{' '}
+                      <input
+                        type="time"
+                        id="timeAllo"
+                        name="timeAllo"
+                        min="8:00"
+                        max="18:00"
+                        onChange={() =>
+                          this.handleTimeAllo(
+                            document.getElementById('timeAllo').value
+                          )
+                        }
+                        required
+                      />{' '}
+                    </tr>
+                    <tr>
+                      {' '}
+                      Number of tasks:{' '}
+                      <input
+                        type="tasks"
+                        id="taskAllo"
+                        name="taskAllo"
+                        min="1"
+                        max="20"
+                        onChange={() =>
+                          this.handleTaskAllo(
+                            document.getElementById('taskAllo').value
+                          )
+                        }
+                        required
+                      />{' '}
+                    </tr>
+
+                    <span class="note">Office hours are 8am to 6pm</span>
+                  </div>
+                </div>
+                <button onClick={() => this.handleArchive()}>
+                  <p>Archive</p>
+                </button>
               </div>
             </div>
           </div>
