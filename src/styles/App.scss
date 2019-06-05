@@ -3,6 +3,18 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+
+  button {
+    font-family: inherit;
+    margin: 0;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
 }
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -107,6 +119,13 @@
   display: relative;
   grid-area: main;
 
+  .playButton {
+    position: absolute;
+    font-size: 200%;
+    color: blue;
+    transform: translateY(130%);
+  }
+
   .taskBox {
     display: grid;
     grid-template-areas: 'task priority';
@@ -131,6 +150,8 @@
 
       i {
         cursor: pointer;
+        color: blue;
+        padding: 2px;
       }
 
       button {
@@ -153,6 +174,10 @@
       text-align: center;
       font-size: 200%;
 
+      button {
+        font-size: 60%;
+        color: blue;
+      }
       i {
         cursor: pointer;
       }
