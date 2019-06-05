@@ -2,7 +2,7 @@
   margin: 0px;
   padding: 0px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -22,10 +22,10 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 7% 11% 64% 11% 7%;
-      grid-template-columns: 7% 11% 64% 11% 7%;
+  grid-template-columns: 7% 11% 64% 11% 7%;
   -ms-grid-rows: 15vh 75vh 10vh;
-      grid-template-rows: 15vh 75vh 10vh;
-      grid-template-areas: '. header header header .' '. . main . .' '. footer footer footer .';
+  grid-template-rows: 15vh 75vh 10vh;
+  grid-template-areas: '. header header header .' '. . main . .' '. footer footer footer .';
 }
 
 .footerContainer {
@@ -47,12 +47,12 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .burger {
@@ -142,16 +142,16 @@
   font-size: 200%;
   color: blue;
   -webkit-transform: translateY(140%);
-          transform: translateY(140%);
+  transform: translateY(140%);
   float: left;
 }
 
 .taskBoxContainer .taskBox {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: 'task priority';
+  grid-template-areas: 'task priority';
   -ms-grid-columns: 70% 30%;
-      grid-template-columns: 70% 30%;
+  grid-template-columns: 70% 30%;
   margin: 5vh 6vw 5vh 6vw;
   border: 1px solid blue;
 }
@@ -279,7 +279,7 @@
   background-color: #f9f9f9;
   min-width: 160px;
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
   z-index: 1;
   text-align: center;
@@ -308,16 +308,16 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
+  -ms-flex-align: left;
+  align-items: left;
   text-align: left;
   padding-left: 7vw;
   width: 20%;
   -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  transform: translateX(-100%);
   z-index: 1;
   -webkit-transition: -webkit-transform 0.4s ease-in;
   transition: -webkit-transform 0.4s ease-in;
@@ -336,7 +336,7 @@
 
 .navActive {
   -webkit-transform: translateX(0%);
-          transform: translateX(0%);
+  transform: translateX(0%);
   background-color: white;
 }
 
@@ -344,12 +344,12 @@
   from {
     opacity: 0;
     -webkit-transform: translateX(50px);
-            transform: translateX(50px);
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
@@ -357,18 +357,18 @@
   from {
     opacity: 0;
     -webkit-transform: translateX(50px);
-            transform: translateX(50px);
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
 .toggle .line1 {
   -webkit-transform: rotate(-45deg) translate(-5px, 6px);
-          transform: rotate(-45deg) translate(-5px, 6px);
+  transform: rotate(-45deg) translate(-5px, 6px);
   background-color: blue;
 }
 
@@ -379,7 +379,7 @@
 
 .toggle .line3 {
   -webkit-transform: rotate(45deg) translate(-5px, -6px);
-          transform: rotate(45deg) translate(-5px, -6px);
+  transform: rotate(45deg) translate(-5px, -6px);
   background-color: blue;
 }
 
@@ -501,7 +501,7 @@
 @media screen and (max-width: 1024px) {
   .container {
     -ms-grid-columns: 4% 8% 76% 8% 4%;
-        grid-template-columns: 4% 8% 76% 8% 4%;
+    grid-template-columns: 4% 8% 76% 8% 4%;
   }
   .navLinks {
     width: 25%;
@@ -511,7 +511,7 @@
 @media screen and (max-width: 864px) {
   .container {
     -ms-grid-columns: 2% 3% 90% 3% 2%;
-        grid-template-columns: 2% 3% 90% 3% 2%;
+    grid-template-columns: 2% 3% 90% 3% 2%;
   }
   .navLinks {
     width: 30%;
@@ -521,17 +521,17 @@
 @media screen and (max-width: 642px) {
   .container {
     -ms-grid-columns: 0% 0% 100% 0% 0%;
-        grid-template-columns: 0% 0% 100% 0% 0%;
+    grid-template-columns: 0% 0% 100% 0% 0%;
     -ms-grid-rows: 15vh 75vh 10vh;
-        grid-template-rows: 15vh 75vh 10vh;
-        grid-template-areas: '. header header header .' 'main main main main main' '. footer footer footer .';
+    grid-template-rows: 15vh 75vh 10vh;
+    grid-template-areas: '. header header header .' 'main main main main main' '. footer footer footer .';
   }
   .taskBoxContainer .taskBox {
     display: -ms-grid;
     display: grid;
-        grid-template-areas: 'task priority';
+    grid-template-areas: 'task priority';
     -ms-grid-columns: 60% 40%;
-        grid-template-columns: 60% 40%;
+    grid-template-columns: 60% 40%;
     margin: none;
     border: 1px solid blue;
   }
@@ -543,7 +543,7 @@
 @media screen and (max-width: 425px) {
   .taskBoxContainer .taskBox {
     -ms-grid-columns: 50% 50%;
-        grid-template-columns: 50% 50%;
+    grid-template-columns: 50% 50%;
   }
   .navLinks {
     width: 40%;
@@ -558,4 +558,3 @@
     width: 50%;
   }
 }
-/*# sourceMappingURL=App.css.map */
