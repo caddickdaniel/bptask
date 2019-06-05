@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
+import { Line } from 'rc-progress';
 
 export default class TaskProcess extends Component {
+  state = {
+    progress: 0,
+    taskInterval: 0,
+    completedTasks: 0,
+    tasksLeft: 0,
+    allocatedTime: this.props.allocatedTime
+  };
+
   render() {
+    // const timeCountdown = () => {
+    //   const { allocatedTime } = this.state;
+    //   setInterval(function() {
+    //     this.setState({ allocatedTime: allocatedTime - 1 });
+    //   }, 5000);
+    // };
+
+    // timeCountdown();
     return (
       <div className="taskBox">
         <div className="taskInfo">
@@ -12,6 +29,19 @@ export default class TaskProcess extends Component {
           </div>
           <div className="taskDescBox">
             <p>{this.props.taskDesc}</p>
+          </div>
+          <div>
+            <small>Tasks in queue: {this.state.tasksLeft}</small>
+            <small>Tasks completed: {this.state.completedTasks}</small>
+            <small>Average task time: {this.state.taskInterval}</small>
+            <small>Time remaining: {this.state.allocatedTime}</small>
+          </div>
+          <div>
+            <Line
+              percent={this.state.progress}
+              strokeWidth="3"
+              strokeColor="blue"
+            />
           </div>
         </div>
 
@@ -43,7 +73,7 @@ export default class TaskProcess extends Component {
               <i class="fas fa-plus-circle" />
             </button>
           </div>
-          <div className="dropdown">
+          <div>
             <div className="buttonContainer">
               <button className="unassignedBtn">
                 <i class="fas fa-cog" />

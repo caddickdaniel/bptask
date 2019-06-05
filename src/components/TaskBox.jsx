@@ -34,7 +34,7 @@ export default class TaskBox extends Component {
     priority: 0,
     maximumWorkers: 25,
     allocatedTime: '0:00',
-    tasks: '0',
+    tasks: 0,
     taskStart: false,
     taskTitle: '',
     taskDesc: ''
@@ -43,6 +43,7 @@ export default class TaskBox extends Component {
   handleTaskTitle = title => {
     this.setState({ taskTitle: title });
     console.log(this.state.taskTitle);
+    
   };
 
   handleTaskDesc = desc => {
@@ -63,12 +64,12 @@ export default class TaskBox extends Component {
   };
 
   handleTimeAllo = timeAllo => {
-    this.setState({ allocatedTime: timeAllo });
+    this.setState({ allocatedTime: timeAllo.split(':').join('.') });
     console.log(this.state.allocatedTime);
   };
 
   handleTaskAllo = taskAllo => {
-    this.setState({ tasks: taskAllo });
+    this.setState({ tasks: +taskAllo });
     console.log(this.state.tasks);
   };
 
@@ -121,7 +122,9 @@ export default class TaskBox extends Component {
       taskDesc,
       assignedWorkers,
       maximumWorkers,
-      priority
+      priority,
+      allocatedTime,
+      tasks
     } = this.state;
     const workerItems = workers.map(worker => {
       return (
@@ -255,13 +258,12 @@ export default class TaskBox extends Component {
                       </span>
                       <tr>
                         {' '}
-                        Complete by:{' '}
+                        Time Allocation:{' '}
                         <input
                           type="time"
                           id="timeAllo"
                           name="timeAllo"
-                          min="8:00"
-                          max="18:00"
+                          step="600"
                           onChange={() =>
                             this.handleTimeAllo(
                               document.getElementById('timeAllo').value
@@ -288,7 +290,9 @@ export default class TaskBox extends Component {
                         />{' '}
                       </tr>
 
-                      <span class="note">Office hours are 8am to 6pm</span>
+                      <span class="note">
+                        Choose how long should be spent on this task
+                      </span>
                     </div>
                   </div>
                   <button onClick={() => this.handleArchive()}>
@@ -309,6 +313,8 @@ export default class TaskBox extends Component {
           assignedWorkers={assignedWorkers}
           maximumWorkers={maximumWorkers}
           priority={priority}
+          allocatedTime={allocatedTime}
+          tasks={tasks}
         />
       );
     }
