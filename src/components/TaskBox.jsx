@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TaskProcess from './TaskProcess';
 
 export default class TaskBox extends Component {
   state = {
@@ -34,10 +35,28 @@ export default class TaskBox extends Component {
     maximumWorkers: 25,
     allocatedTime: '0:00',
     tasks: '0',
-    taskStart: false
+    taskStart: false,
+    taskTitle: '',
+    taskDesc: ''
   };
 
-  handleTaskStart = () => {};
+  handleTaskTitle = title => {
+    this.setState({ taskTitle: title });
+    console.log(this.state.taskTitle);
+  };
+
+  handleTaskDesc = desc => {
+    this.setState({ taskDesc: desc });
+    console.log(this.state.taskDesc);
+  };
+
+  handleTaskStart = () => {
+    if (this.state.taskStart === false) {
+      this.setState({ taskStart: true });
+    } else {
+      this.setState({ taskStart: false });
+    }
+  };
 
   handleArchive = () => {
     this.taskBox.display = 'none';
@@ -95,7 +114,15 @@ export default class TaskBox extends Component {
   };
 
   render() {
-    const { workers } = this.state;
+    const {
+      workers,
+      taskStart,
+      taskTitle,
+      taskDesc,
+      assignedWorkers,
+      maximumWorkers,
+      priority
+    } = this.state;
     const workerItems = workers.map(worker => {
       return (
         <tr>
@@ -111,147 +138,179 @@ export default class TaskBox extends Component {
       );
     });
 
-    return (
-      <div className="taskBox">
-        <div className="taskInfo">
-          <div className="taskTitle">
-            <p>Task</p>
-            <input
-              type="text"
-              className="taskName"
-              placeholder="Order Coffee Beans"
-            />
+    if (taskStart === false) {
+      return (
+        <div className="taskBox">
+          <div className="taskInfo">
+            <div className="taskTitle">
+              <p>Task</p>
+              <input
+                type="text"
+                className="taskName"
+                placeholder="Order Coffee Beans"
+                onChange={() =>
+                  this.handleTaskTitle(
+                    document.querySelector('.taskName').value
+                  )
+                }
+              />
+            </div>
+            <div className="taskDescBox">
+              <textarea
+                className="taskDesc"
+                placeholder="Process Description"
+                onChange={() =>
+                  this.handleTaskDesc(document.querySelector('.taskDesc').value)
+                }
+              />
+            </div>
           </div>
-          <div className="taskDesc">
-            <textarea placeholder="Process Description" />
-          </div>
-        </div>
 
-        <div className="processBox">
-          <div className="playButton">
-            <i class="far fa-play-circle" />
-          </div>
-          <div className="workersBox">
-            <p>Workers Assigned</p>
-            <button
-              disabled={this.state.assignedWorkers === 0 ? true : false}
-              onClick={() => this.handleWorkerInc(-1)}
-            >
-              <i class="fas fa-minus-circle" />
-            </button>
-            {this.state.assignedWorkers}/{this.state.maximumWorkers}
-            <button
-              disabled={this.state.assignedWorkers === 25 ? true : false}
-              onClick={() => this.handleWorkerInc(1)}
-            >
-              <i class="fas fa-plus-circle" />
-            </button>
-          </div>
-          <div className="priorityBox">
-            <button
-              disabled={this.state.priority === 0 ? true : false}
-              onClick={() => this.handlePriority(-1)}
-            >
-              <i class="fas fa-minus-circle" />
-            </button>
-            <i class="far fa-star" />
-            <i class="far fa-star" />
-            <i class="far fa-star" />
-            <button
-              disabled={this.state.priority === 6 ? true : false}
-              onClick={() => this.handlePriority(1)}
-            >
-              <i class="fas fa-plus-circle" />
-            </button>
-          </div>
-          <div className="dropdown">
-            <div className="buttonContainer">
-              <button className="unassignedBtn">
-                <i class="fas fa-cog" />
-                <p>Unassigned</p>
+          <div className="processBox">
+            <div className="playButton">
+              <i
+                class="far fa-play-circle"
+                onClick={() => this.handleTaskStart()}
+              />
+            </div>
+            <div className="workersBox">
+              <p>Workers Assigned</p>
+              <button
+                disabled={this.state.assignedWorkers === 0 ? true : false}
+                onClick={() => this.handleWorkerInc(-1)}
+              >
+                <i class="fas fa-minus-circle" />
               </button>
-              <div className="dropdown-content">
-                <button>
-                  <p onClick={() => this.handleAutoAssign(this.state.priority)}>
-                    Auto-Assign
-                  </p>
+              {this.state.assignedWorkers}/{this.state.maximumWorkers}
+              <button
+                disabled={this.state.assignedWorkers === 25 ? true : false}
+                onClick={() => this.handleWorkerInc(1)}
+              >
+                <i class="fas fa-plus-circle" />
+              </button>
+            </div>
+            <div className="priorityBox">
+              <button
+                disabled={this.state.priority === 0 ? true : false}
+                onClick={() => this.handlePriority(-1)}
+              >
+                <i class="fas fa-minus-circle" />
+              </button>
+              <i class="far fa-star" />
+              <i class="far fa-star" />
+              <i class="far fa-star" />
+              <button
+                disabled={this.state.priority === 6 ? true : false}
+                onClick={() => this.handlePriority(1)}
+              >
+                <i class="fas fa-plus-circle" />
+              </button>
+            </div>
+            <div className="dropdown">
+              <div className="buttonContainer">
+                <button className="unassignedBtn">
+                  <i class="fas fa-cog" />
+                  <p>Unassigned</p>
                 </button>
-                <button id="myBtn" onClick={() => this.handleModal('myModal')}>
-                  <p>Select Workers</p>
-                </button>
-
-                <div id="myModal" className="modal">
-                  <div className="modal-content">
-                    <span
-                      className="close"
-                      onClick={() => this.closeModal('myModal')}
+                <div className="dropdown-content">
+                  <button>
+                    <p
+                      onClick={() => this.handleAutoAssign(this.state.priority)}
                     >
-                      &times;
-                    </span>
-                    {workerItems}
-                    <button onClick={() => this.clearRadios()}>Clear</button>
-                  </div>
-                </div>
-                <button
-                  id="myBtn2"
-                  onClick={() => this.handleModal('myModal2')}
-                >
-                  <p>Schedule</p>
-                </button>
-                <div id="myModal2" className="modal2">
-                  <div className="modal-content2">
-                    <span
-                      className="close"
-                      onClick={() => this.closeModal('myModal2')}
-                    >
-                      &times;
-                    </span>
-                    <tr>
-                      {' '}
-                      Complete by:{' '}
-                      <input
-                        type="time"
-                        id="timeAllo"
-                        name="timeAllo"
-                        min="8:00"
-                        max="18:00"
-                        onChange={() =>
-                          this.handleTimeAllo(
-                            document.getElementById('timeAllo').value
-                          )
-                        }
-                        required
-                      />{' '}
-                    </tr>
-                    <tr>
-                      {' '}
-                      Number of tasks:{' '}
-                      <input
-                        type="tasks"
-                        id="taskAllo"
-                        name="taskAllo"
-                        min="1"
-                        max="20"
-                        onChange={() =>
-                          this.handleTaskAllo(
-                            document.getElementById('taskAllo').value
-                          )
-                        }
-                        required
-                      />{' '}
-                    </tr>
+                      Auto-Assign
+                    </p>
+                  </button>
+                  <button
+                    id="myBtn"
+                    onClick={() => this.handleModal('myModal')}
+                  >
+                    <p>Select Workers</p>
+                  </button>
 
-                    <span class="note">Office hours are 8am to 6pm</span>
+                  <div id="myModal" className="modal">
+                    <div className="modal-content">
+                      <span
+                        className="close"
+                        onClick={() => this.closeModal('myModal')}
+                      >
+                        &times;
+                      </span>
+                      {workerItems}
+                      <button onClick={() => this.clearRadios()}>Clear</button>
+                    </div>
                   </div>
+                  <button
+                    id="myBtn2"
+                    onClick={() => this.handleModal('myModal2')}
+                  >
+                    <p>Schedule</p>
+                  </button>
+                  <div id="myModal2" className="modal2">
+                    <div className="modal-content2">
+                      <span
+                        className="close"
+                        onClick={() => this.closeModal('myModal2')}
+                      >
+                        &times;
+                      </span>
+                      <tr>
+                        {' '}
+                        Complete by:{' '}
+                        <input
+                          type="time"
+                          id="timeAllo"
+                          name="timeAllo"
+                          min="8:00"
+                          max="18:00"
+                          onChange={() =>
+                            this.handleTimeAllo(
+                              document.getElementById('timeAllo').value
+                            )
+                          }
+                          required
+                        />{' '}
+                      </tr>
+                      <tr>
+                        {' '}
+                        Number of tasks:{' '}
+                        <input
+                          type="tasks"
+                          id="taskAllo"
+                          name="taskAllo"
+                          min="1"
+                          max="20"
+                          onChange={() =>
+                            this.handleTaskAllo(
+                              document.getElementById('taskAllo').value
+                            )
+                          }
+                          required
+                        />{' '}
+                      </tr>
+
+                      <span class="note">Office hours are 8am to 6pm</span>
+                    </div>
+                  </div>
+                  <button onClick={() => this.handleArchive()}>
+                    <p>Archive</p>
+                  </button>
                 </div>
-                <button onClick={() => this.handleArchive()}>
-                  <p>Archive</p>
-                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <TaskProcess
+          handleTaskStart={this.handleTaskStart}
+          taskTitle={taskTitle}
+          taskDesc={taskDesc}
+          assignedWorkers={assignedWorkers}
+          maximumWorkers={maximumWorkers}
+          priority={priority}
+        />
+      );
+    }
   }
 }

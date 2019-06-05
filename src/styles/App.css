@@ -220,7 +220,7 @@
   width: 95%;
 }
 
-.taskBoxContainer .taskDesc textarea {
+.taskBoxContainer .taskDescBox textarea {
   border: none;
   background-image: none;
   background-color: transparent;
