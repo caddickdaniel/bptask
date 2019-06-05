@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import { Line } from 'rc-progress';
+// import { Line } from 'rc-progress';
+
+const timeConverter = time => {
+  let hours = time / 60;
+  let rHours = Math.floor(hours);
+  let minutes = (hours - rHours) * 60;
+  let rMinutes = Math.round(minutes);
+  return time + rHours + rMinutes;
+};
 
 export default class TaskProcess extends Component {
   state = {
-    progress: 0,
-    taskInterval: 0,
-    completedTasks: 0,
-    tasksLeft: 0,
-    allocatedTime: this.props.allocatedTime
+    taskInterval: `${timeConverter(this.props.allocatedTime) /
+      this.props.assignedWorkers}mins`,
+    allocatedTime: timeConverter(+this.props.allocatedTime * 60),
+    timeAlapsed: 0,
+    progress: 0
   };
-
   render() {
-    // const timeCountdown = () => {
-    //   const { allocatedTime } = this.state;
-    //   setInterval(function() {
-    //     this.setState({ allocatedTime: allocatedTime - 1 });
-    //   }, 5000);
-    // };
-
-    // timeCountdown();
     return (
       <div className="taskBox">
         <div className="taskInfo">
@@ -31,17 +30,26 @@ export default class TaskProcess extends Component {
             <p>{this.props.taskDesc}</p>
           </div>
           <div>
-            <small>Tasks in queue: {this.state.tasksLeft}</small>
-            <small>Tasks completed: {this.state.completedTasks}</small>
-            <small>Average task time: {this.state.taskInterval}</small>
-            <small>Time remaining: {this.state.allocatedTime}</small>
+            <small>Average task time: {this.state.taskInterval || 0}</small>
+            <small>Time remaining: {this.state.allocatedTime || 0}mins</small>
+          </div>
+          <div className="progress">
+            <div
+              className="progress-bar"
+              id="progressBar"
+              role="progressbar"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            />
           </div>
           <div>
-            <Line
+            {/* <Line
               percent={this.state.progress}
               strokeWidth="3"
               strokeColor="blue"
-            />
+              id="progressBar"
+            /> */}
           </div>
         </div>
 

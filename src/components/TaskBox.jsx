@@ -43,7 +43,6 @@ export default class TaskBox extends Component {
   handleTaskTitle = title => {
     this.setState({ taskTitle: title });
     console.log(this.state.taskTitle);
-    
   };
 
   handleTaskDesc = desc => {
@@ -310,10 +309,10 @@ export default class TaskBox extends Component {
           handleTaskStart={this.handleTaskStart}
           taskTitle={taskTitle}
           taskDesc={taskDesc}
-          assignedWorkers={assignedWorkers}
+          assignedWorkers={+assignedWorkers}
           maximumWorkers={maximumWorkers}
           priority={priority}
-          allocatedTime={allocatedTime}
+          allocatedTime={+allocatedTime}
           tasks={tasks}
         />
       );
